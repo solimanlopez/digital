@@ -30,6 +30,16 @@ const titulo = vars.titulo;
 
 const detalles = vars.detalles;
 
+const link = vars.link;
+
+const suelo = vars.suelo;
+
+const muro = vars.muro;
+
+const descripcion = vars.descripcion;
+
+
+
 // function setupKeyLogger() {
 //   document.onkeydown = function (e) {
 //     console.log(e);
@@ -51,10 +61,10 @@ var Element = function (content, x, y, z, ry, rx, type) {
 
   if (type === "video") {
     var divVideo = document.createElement("div");
-    divVideo.style.width = "480px";
+    divVideo.style.width = "640px";
     divVideo.style.height = "360px";
     divVideo.style.backgroundColor = "#000";
-    divVideo.style.border = "2px rgba(0, 255, 255, 0.5) solid";
+    // divVideo.style.border = "2px rgba(0, 255, 255, 0.5) solid";
     divVideo.style.display = "flex";
     divVideo.style.alignItems = "center";
     divVideo.style.justifyContent = "center";
@@ -77,11 +87,11 @@ var Element = function (content, x, y, z, ry, rx, type) {
     divText.style.display = "flex";
     divText.style.alignItems = "center";
     divText.style.justifyContent = "center";
-    divText.style.backgroundImage = "url(./assets/brick_diffuse.jpg)";
+    divText.style.backgroundImage = "linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,254,254,1) 11%, rgba(165,165,165,1) 68%, rgba(139,139,139,1) 100%)"
     divText.style.backgroundSize = "200px";
     var text = document.createElement("p");
     text.innerHTML = content;
-    text.style.fontSize = "35px";
+    text.style.fontSize = "15px";
     divText.appendChild(text);
     div.appendChild(divText);
   }
@@ -94,7 +104,25 @@ var Element = function (content, x, y, z, ry, rx, type) {
     divText.style.display = "flex";
     divText.style.alignItems = "center";
     divText.style.justifyContent = "center";
-    divText.style.backgroundImage = "url(./assets/brick_diffuse.jpg)";
+    divText.style.backgroundImage = "linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,254,254,1) 11%, rgba(165,165,165,1) 64%, rgba(139,139,139,1) 100%)"
+    divText.style.backgroundSize = "200px";
+    var text = document.createElement("p");
+    text.innerHTML = content;
+    text.style.fontSize = "12px";
+    text.style.lineHeight = "102%";
+    divText.appendChild(text);
+    div.appendChild(divText);
+  }
+
+    if (type === "descripcion") {
+    var divText = document.createElement("div");
+    divText.style.width = "480px";
+    divText.style.height = "360px";
+    divText.style.color = "#000";
+    divText.style.display = "flex";
+    divText.style.alignItems = "center";
+    divText.style.justifyContent = "center";
+    divText.style.backgroundImage = "linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,254,254,1) 11%, rgba(165,165,165,1) 64%, rgba(139,139,139,1) 100%)"
     divText.style.backgroundSize = "200px";
     var text = document.createElement("p");
     text.innerHTML = content;
@@ -103,6 +131,7 @@ var Element = function (content, x, y, z, ry, rx, type) {
     divText.appendChild(text);
     div.appendChild(divText);
   }
+
 
   if (type === "image") {
     var img = new Image(480, 360);
@@ -114,15 +143,33 @@ var Element = function (content, x, y, z, ry, rx, type) {
 
   if (type === "suelo") {
     var divText = document.createElement("div");
-    divText.style.width = "480px";
-    divText.style.height = "480px";
+    divText.style.width = "8000px";
+    divText.style.height = "8000px";
     divText.style.color = "#000";
-    divText.style.border = "2px rgba(0, 255, 255, 0.5) solid";
+    // divText.style.border = "2px rgba(0, 255, 255, 0.5) solid";
     divText.style.display = "flex";
     divText.style.alignItems = "center";
     divText.style.justifyContent = "center";
-    divText.style.backgroundImage = "url(./assets/hardwood2_diffuse.jpg)";
-    divText.style.backgroundSize = "200px";
+    divText.style.backgroundImage = "linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(255,254,254,1) 11%, rgba(165,165,165,1) 64%, rgba(139,139,139,1) 100%)";
+    divText.style.backgroundSize = "8000px";
+    var text = document.createElement("p");
+    text.style.fontSize = "50px";
+    text.style.lineHeight = "102%";
+    divText.appendChild(text);
+    div.appendChild(divText);
+  }
+
+    if (type === "muro") {
+    var divText = document.createElement("div");
+    divText.style.width = "8000px";
+    divText.style.height = "2000px";
+    divText.style.color = "#000";
+    // divText.style.border = "2px rgba(0, 255, 255, 0.5) solid";
+    divText.style.display = "flex";
+    divText.style.alignItems = "center";
+    divText.style.justifyContent = "center";
+    divText.style.backgroundImage = "linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,254,254,1) 11%, rgba(165,165,165,1) 75%, rgba(139,139,139,1) 100%)";
+    divText.style.backgroundSize = "2000px";
     var text = document.createElement("p");
     text.style.fontSize = "50px";
     text.style.lineHeight = "102%";
@@ -151,7 +198,7 @@ function init() {
     5000
   );
   // camera.position.set(500, 350, 750);
-  camera.position.set(0, 5, 240);
+  camera.position.set(0, 5, 800);
 
   scene = new THREE.Scene();
 
@@ -162,16 +209,21 @@ function init() {
   var group = new THREE.Group();
 
   // Aquí se definen las paredes y el suelo.
-  group.add(new Element("./assets/soliman.jpg", 0, 0, -240, 0, 0, "image"));
-  group.add(new Element("./assets/kinect.mp4", -240, 0, 0, Math.PI / 2, 0, "video"));
-  group.add(new Element(nombre, 0, 0, 240, Math.PI, 0, "nombre"));
-  group.add(new Element(titulo, 240, 0, 0, -Math.PI / 2, 0, "titulo"));
-  group.add(new Element(titulo, 0, -180, -60, 0, -Math.PI / 2, "suelo"));
+  // group.add(new Element("./assets/soliman.jpg", -640, 0, 0, Math.PI / 2, 0, "image"));
+  group.add(new Element(link, -90, 20, -420, 0, 0, "video"));
+  group.add(new Element(nombre, -640, 20, 0, Math.PI / 2, 0, "nombre"));
+  group.add(new Element(titulo, 640, 20, 0, -Math.PI / 2, 0, "titulo"));
+  group.add(new Element(suelo, -3500, -178, -600, 0, -Math.PI / 2, "suelo"));
+  group.add(new Element(muro, -3500, 1640, -780, 0, 0, "muro"));
+  group.add(new Element(muro, -3736, 1640, 6980, Math.PI / 2, 0, "muro"));
+  group.add(new Element(muro, 4258, 1640, 6980,Math.PI / 2, 0, "muro"));
+   group.add(new Element(descripcion, 4258, 1640, 6980,Math.PI / 2, 0, "descripcion"));
+
   scene.add(group);
 
   // controls = new TrackballControls(camera, renderer.domElement);
   controls = new OrbitControls(camera, renderer.domElement);
-  controls.rotateSpeed = 4;
+  controls.rotateSpeed = 3;
 
 
   window.addEventListener("resize", onWindowResize, false);
@@ -199,4 +251,30 @@ function animate() {
   requestAnimationFrame(animate);
   controls.update();
   renderer.render(scene, camera);
+}
+
+// Get the modal
+var modal = document.getElementById("infoExposition");
+
+// Get the button that opens the modal
+var btn = document.getElementById("infoExpo");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
 }

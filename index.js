@@ -29,9 +29,12 @@ const openRoom = (e) => {
   const nombre = target.childNodes[0].innerHTML;
   const titulo = target.childNodes[1].innerHTML;
   const detalles = target.childNodes[2].innerHTML;
+  const link = target.childNodes[3].innerHTML;
+  const descripcion = target.childNodes[4].innerHeight;
   // const url = `./pulsar.html?nombre=${nombre}&titulo=${titulo}&detalles=${detalles}`;
-  const url = `./room.html?nombre=${nombre}&titulo=${titulo}&detalles=${detalles}`;
-  window.open(url, "_blank");
+  const url = `./room.html?nombre=${nombre}&titulo=${titulo}&detalles=${detalles}&link=${link}&descripcion=${descripcion}`;
+  window.open(url, "_self");
+
 
 }
 
@@ -39,8 +42,8 @@ init();
 animate();
 
 function init() {
-  camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 1, 10000);
-  camera.position.z = 6000;
+  camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 10000);
+  camera.position.z = 9000;
 
   scene = new THREE.Scene();
 
@@ -56,7 +59,7 @@ function init() {
 
     artista.className = "artista";
     // artista.style.backgroundColor = "rgba(0,0,0," + (Math.random() * 0.5 + 0.25) + ")";
-    artista.style.backgroundColor = "rgba(0,0,0,0.8)";
+    //artista.style.backgroundColor = "rgba(0,0,0,0.8)";
 
     var nombre = document.createElement("div");
     nombre.className = "nombre";
@@ -73,11 +76,23 @@ function init() {
     detalles.innerHTML = artistas[i].fecha + "<br>" + artistas[i].duracion + "<br>" + artistas[i].tipo;
     artista.appendChild(detalles);
 
+    var link = document.createElement("div");
+    link.className = "link";
+    link.textContent = artistas[i].link;
+    artista.appendChild(link);
+
+    var descripcion = document.createElement("div");
+    descripcion.className = "descripcion";
+    link.textContent = artistas[i].descripcion;
+    artista.appendChild(descripcion);
+
+
+
     // Posición inicial
     var object = new CSS3DObject(artista);
-    object.position.x = Math.random() * 7000 - 2000;
-    object.position.y = Math.random() * 7000 - 2000;
-    object.position.z = Math.random() * 7000 - 2000;
+    object.position.x = Math.random() * 9000 - 1000;
+    object.position.y = Math.random() * 9000 - 2000;
+    object.position.z = Math.random() * 9000 - 2000;
 
     scene.add(object);
 
@@ -93,12 +108,15 @@ function init() {
 
     object.position.x = (i % 5) * 400 - 800;
     object.position.y = -(Math.floor(i / 5) % 5) * 400 + 800;
-    object.position.z = Math.floor(i / 25) * 1000 - 250;
+    object.position.z = Math.floor(i / 25) * 1100 - 250;
 
     targets.grid.push(object);
   }
 
   console.log("targets: ", targets)
+
+
+
 
   // Render
 
@@ -110,7 +128,7 @@ function init() {
 
   // controls = new TrackballControls(camera, renderer.domElement);
   controls = new OrbitControls(camera, renderer.domElement);
-  controls.minDistance = 500;
+  controls.minDistance = 300;
   controls.maxDistance = 6000;
   controls.addEventListener("change", render);
 
@@ -125,7 +143,7 @@ function init() {
   );
 
   // Animación para recolocar
-  transform(targets.grid, 2000);
+  transform(targets.grid, 3000);
 
   window.addEventListener("resize", onWindowResize, false);
 }
@@ -141,17 +159,17 @@ function transform(targets, duration) {
 
     new TWEEN.Tween(object.position)
       .to({ x: target.position.x, y: target.position.y, z: target.position.z }, Math.random() * duration + duration)
-      .easing(TWEEN.Easing.Exponential.InOut)
+      .easing(TWEEN.Easing.Cubic.InOut)
       .start();
 
     new TWEEN.Tween(object.rotation)
       .to({ x: target.rotation.x, y: target.rotation.y, z: target.rotation.z }, Math.random() * duration + duration)
-      .easing(TWEEN.Easing.Exponential.InOut)
+      .easing(TWEEN.Easing.Cubic.Out)
       .start();
   }
 
   new TWEEN.Tween(this)
-    .to({}, duration * 2)
+    .to({}, duration * 4)
     .onUpdate(render)
     .start();
 }
@@ -175,4 +193,30 @@ function animate() {
 
 function render() {
   renderer.render(scene, camera);
+}
+
+// Get the modal
+var modal = document.getElementById("infoExposition");
+
+// Get the button that opens the modal
+var btn = document.getElementById("infoExpo");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
 }

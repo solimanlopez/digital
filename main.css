@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  background-color: #fff;
+  /* background-color: #fff; */
   color: #fff;
   font-family: Monospace;
   font-size: 13px;
@@ -8,6 +8,11 @@ body {
   overscroll-behavior: none;
   overflow: hidden;
   user-select: none;
+  font-family: 'IBM Plex Mono', monospace;
+/*  background: linear-gradient(9deg, #adadad, #353535, #a9a9a9, #effffb);
+  background-size: 400% 400%;
+  animation: gradient 25s ease infinite;*/
+  background: #fff;
 }
 
 a {
@@ -22,6 +27,7 @@ a:hover {
 button {
   cursor: pointer;
   text-transform: uppercase;
+
 }
 
 canvas {
@@ -90,3 +96,110 @@ select {
   color: #777777;
   font-size: 12px;
 }
+
+.logoHDM {
+    position: absolute;
+    max-width: 100px;
+    padding: 20px;
+    z-index: 10;
+
+}
+
+.logoHDMText {
+    position: absolute;
+    max-width: 100px;
+    padding-right: 20px;
+    float: right;
+    right: 0px;
+    height: 100%;
+    z-index: 10;
+    /*padding-top: 10px;*/
+
+}
+
+.logoDigital {
+    bottom: 30px;
+    position: absolute;
+    font-size: 54px;
+    color: #000;
+    width: 300px;
+    left: 50%;
+    margin-left: -100px;
+    z-index: 10;
+}
+
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+ /* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  z-index: 1;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #000;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+} 
+
+.infoExpo {
+position: absolute;
+z-index: 1;
+display: inline-block;
+cursor: pointer;
+color: #ffffff;
+font-family: Roboto;
+font-size: 13px;
+text-decoration: none;
+bottom: 50px;
+left: 8px;
+max-width: 37px;
+}
+
+.infoExpo:hover {
+    max-width: 44px;
+}
+.infoExpo:active {
+    position:absolute;
+    bottom: 50px;
+}
+
+

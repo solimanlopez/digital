@@ -5,6 +5,7 @@ var artistas = [
     fecha: "Mayo 2020",
     duracion: "20'",
     tipo: "mp4",
+    link: "https://www.youtube.com/watch?v=zzcagc96LLQ&list=RDMMzzcagc96LLQ&start_radio=1"
   },
   {
     nombre: "Solimán López",
@@ -693,10 +694,12 @@ var artistas = [
     tipo: "mp4",
   },
   {
-    nombre: "Solimán López",
-    titulo: "Pulsar",
+    nombre: "Viking Eggeling",
+    titulo: "Diagonal Symphony",
     fecha: "Marzo 2020",
     duracion: "10'",
     tipo: "mp4",
+    link: "./assets/videos/1921VikingEggelingDiagonalSymphony.mp4",
+    descripcion: "hola",
   },
 ];

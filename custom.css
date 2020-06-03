@@ -7,22 +7,25 @@ a {
   bottom: 20px;
   width: 100%;
   text-align: center;
+  z-index: 10;
 }
 
 .artista {
-  width: 240px;
+  width: 290px;
   height: 180px;
   /*box-shadow: 0px 0px 12px rgba(0, 255, 255, 0.5);*/
   border: 1px solid rgba(127, 255, 255, 0.25);
-  font-family: Helvetica, sans-serif;
+  font-family: 'IBM Plex Mono', monospace;
   text-align: center;
   line-height: normal;
   cursor: pointer;
+  background: rgba(255,255,255,0.8);
 }
 
 .artista:hover {
-  box-shadow: 0px 0px 12px rgba(0, 255, 255, 0.75);
-  border: 1px solid rgba(127, 255, 255, 0.75);
+  box-shadow: 0px 0px 12px rgba(51, 255, 0, 0.9);
+  border: 1px solid rgba(51, 255, 0, 0.9);
+  background: rgba(51, 255, 0, 0.9)
 }
 
 .artista .nombre {
@@ -31,10 +34,11 @@ a {
   top: 20px;
   left: 0px;
   right: 0px;
-  font-size: 22px;
+  font-size: 24px;
   /*text-shadow: 0 0 10px rgba(0, 255, 255, 0.95);*/
-  color: #fff;
+  color: #000;
   pointer-events: none;
+  font-family: 'IBM Plex Mono', monospace;
 }
 
 .artista .titulo {
@@ -44,8 +48,9 @@ a {
   right: 0px;
   font-size: 22px;
   font-weight: bold;
-  color: rgba(255, 255, 255, 0.75);
+  color: #000;
   pointer-events: none;
+  font-family: 'IBM Plex Mono', monospace;
 }
 
 .artista .detalles {
@@ -53,27 +58,40 @@ a {
   bottom: 15px;
   left: 0px;
   right: 0px;
-  font-size: 12px;
-  color: rgba(127, 255, 255, 0.75);
+  font-size: 14px;
+  /*color: rgba(51, 255, 0, 0.9);*/
+  color:#000;
   pointer-events: none;
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+.artista .detalles:hover {
+  color: #fff;
+
 }
 
 button {
-  color: rgba(127, 255, 255, 0.75);
-  background: transparent;
-  outline: 1px solid rgba(127, 255, 255, 0.75);
+  color: rgba(255, 255, 255, 0.75);
+  background: black;
+  outline: 1px solid rgba(51, 255, 0, 0.9);
   border: 0px;
   padding: 5px 10px;
   cursor: pointer;
+  left: 10px;
+  position: absolute;
+  bottom: -10px;
+  font-family: 'IBM Plex Mono', monospace;
+
 }
 
 button:hover {
-  background-color: rgba(0, 255, 255, 0.5);
+  background-color: rgba(51, 255, 0, 0.9);
+  color: #000;
 }
 
 button:active {
   color: #000000;
-  background-color: rgba(0, 255, 255, 0.75);
+  background-color: rgba(51, 255, 0, 0.9);
 }
 
 #sala3D {
@@ -81,7 +99,9 @@ button:active {
 }
 
 #container {
-  padding: 10px;
+  /*padding: 10px;*/
+  position: absolute;
+  z-index: 1;
 }
 
 /* body {
@@ -95,3 +115,229 @@ button:active {
   bottom: 0;
   right: 0;
 }
+
+#periodos {
+  position: absolute;
+  left: 10px;
+  top:150px;
+  font-size: 10px;
+  line-height: 70px;
+  
+  color:#000;
+
+}
+
+/* periodos
+} */
+
+#button1 {
+  color: rgba(255, 255, 255, 0.75);
+  background: black;
+  outline: 1px solid rgba(51, 255, 0, 0.9);
+  border: 0px;
+  padding: 5px 10px;
+  cursor: pointer;
+  left: 10px;
+  position: relative;
+  top: 10px;
+  font-family: 'IBM Plex Mono', monospace;
+  z-index: 1;
+}
+
+#button1::after {
+  content:"./1>";
+}
+
+#button1:hover::after {
+   content:"./1>Predecesores [1921-1940].";
+}
+#button1:hover {
+   color:#fff;
+}
+
+#button1:active {
+  color: #000000;
+  background-color: rgba(51, 255, 0, 0.9);
+}
+
+#button2 {
+  color: rgba(255, 255, 255, 0.75);
+  background: black;
+  outline: 1px solid rgba(51, 255, 0, 0.9);
+  border: 0px;
+  padding: 5px 10px;
+  cursor: pointer;
+  left: 10px;
+  position: relative;
+  top: 10px;
+  font-family: 'IBM Plex Mono', monospace;
+  z-index: 1;
+}
+
+#button2::after {
+  content:"./2>";
+}
+
+#button2:hover::after {
+   content:"./2>La Guerra fría y lo electrónico [1945-1959].";
+}
+#button2:hover {
+   color:#fff;
+}
+
+#button2:active {
+  color: #000000;
+  background-color: rgba(51, 255, 0, 0.9);
+}
+
+#button3 {
+  color: rgba(255, 255, 255, 0.75);
+  background: black;
+  outline: 1px solid rgba(51, 255, 0, 0.9);
+  border: 0px;
+  padding: 5px 10px;
+  cursor: pointer;
+  left: 10px;
+  position: relative;
+  top: 10px;
+  font-family: 'IBM Plex Mono', monospace;
+  z-index: 1;
+}
+
+#button3::after {
+  content:"./3>";
+}
+
+#button3:hover::after {
+   content:"./3>Los pioneros: la revolución tecnológica [1960-1970].";
+}
+#button3:hover {
+   color:#fff;
+}
+
+#button3:active {
+  color: #000000;
+  background-color: rgba(51, 255, 0, 0.9);
+}
+
+#button4 {
+  color: rgba(255, 255, 255, 0.75);
+  background: black;
+  outline: 1px solid rgba(51, 255, 0, 0.9);
+  border: 0px;
+  padding: 5px 10px;
+  cursor: pointer;
+  left: 10px;
+  position: relative;
+  top: 10px;
+  font-family: 'IBM Plex Mono', monospace;
+  z-index: 1;
+}
+
+#button4::after {
+  content:"./4>";
+}
+
+#button4:hover::after {
+   content:"./4>Seminario de generación automática de formas plásticas del Centro de cálculo de la Universidad de Madrid [1968-1971].";
+}
+#button4:hover {
+   color:#fff;
+}
+
+#button4:active {
+  color: #000000;
+  background-color: rgba(51, 255, 0, 0.9);
+}
+
+#button5 {
+  color: rgba(255, 255, 255, 0.75);
+  background: black;
+  outline: 1px solid rgba(51, 255, 0, 0.9);
+  border: 0px;
+  padding: 5px 10px;
+  cursor: pointer;
+  left: 10px;
+  position: relative;
+  top: 10px;
+  font-family: 'IBM Plex Mono', monospace;
+  z-index: 1;
+}
+
+#button5::after {
+  content:"./5>";
+}
+
+#button5:hover::after {
+   content:"./5>Los avanzados [1970-1981].";
+}
+#button5:hover {
+   color:#fff;
+}
+
+#button5:active {
+  color: #000000;
+  background-color: rgba(51, 255, 0, 0.9);
+}
+
+#button6 {
+  color: rgba(255, 255, 255, 0.75);
+  background: black;
+  outline: 1px solid rgba(51, 255, 0, 0.9);
+  border: 0px;
+  padding: 5px 10px;
+  cursor: pointer;
+  left: 10px;
+  position: relative;
+  top: 10px;
+  font-family: 'IBM Plex Mono', monospace;
+  z-index: 1;
+}
+
+#button6::after {
+  content:"./6>";
+}
+
+#button6:hover::after {
+   content:"./6>La era de los ordenadores personales [1981-1995].";
+}
+#button6:hover {
+   color:#fff;
+}
+
+#button6:active {
+  color: #000000;
+  background-color: rgba(51, 255, 0, 0.9);
+}
+
+#button7 {
+  color: rgba(255, 255, 255, 0.75);
+  background: black;
+  outline: 1px solid rgba(51, 255, 0, 0.9);
+  border: 0px;
+  padding: 5px 10px;
+  cursor: pointer;
+  left: 10px;
+  position: relative;
+  top: 10px;
+  font-family: 'IBM Plex Mono', monospace;
+  z-index: 1;
+}
+
+#button7::after {
+  content:"./7>";
+}
+
+#button7:hover::after {
+   content:"./7>Los tiempos del juego [1996-2005].";
+}
+#button7:hover {
+   color:#fff;
+}
+
+#button7:active {
+  color: #000000;
+  background-color: rgba(51, 255, 0, 0.9);
+}
+
+
